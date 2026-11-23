@@ -1,0 +1,11 @@
+{
+  "name": "muhammed-bot",
+  "version": "1.0.0",
+  "description": "MUHAMMED BOT project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": ["bot", "muhammed"],
+  "license": "MIT"
+}

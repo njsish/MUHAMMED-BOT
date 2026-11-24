@@ -1,20 +1,51 @@
-const botName = "MUHAMMED BOT";
+const readline = require("readline");
 
-const commands = {
-  ".menu": "📋 MUHAMMED BOT COMMANDS\n.alive\n.help\n.ping\n.owner",
-  ".alive": "🔥 MUHAMMED BOT is online!",
-  ".help": "Type .menu to see all commands.",
-  ".ping": "🏓 Pong! Bot is responding.",
-  ".owner": "👑 Owner: Muhammed"
-};
+const botName = "MM BOT";
+const owner = "Muhammed";
 
-function reply(message) {
-  return commands[message.toLowerCase()] || "Unknown command. Type .menu";
+console.log(`🔥 ${botName} has started!`);
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  prompt: "You: "
+});
+
+function handleCommand(message) {
+  const command = message.trim().toLowerCase();
+
+  switch (command) {
+    case ".menu":
+      return `
+👑 ${botName}
+
+.menu - Show commands
+.alive - Check bot status
+.ping - Test response
+.owner - Bot owner
+.help - Get help
+`;
+
+    case ".alive":
+      return "🔥 MM BOT is alive!";
+
+    case ".ping":
+      return "🏓 Pong!";
+
+    case ".owner":
+      return `👑 Bot owner: ${owner}`;
+
+    case ".help":
+      return "Type .menu to see available commands.";
+
+    default:
+      return "Unknown command. Type .menu";
+  }
 }
 
-console.log(`${botName} has started!`);
-console.log(reply(".menu"));
+rl.prompt();
 
-setInterval(() => {
-  console.log(`${botName} is still running...`);
-}, 60000);
+rl.on("line", (message) => {
+  console.log(`${botName}: ${handleCommand(message)}`);
+  rl.prompt();
+});

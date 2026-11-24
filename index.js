@@ -1,16 +1,20 @@
 const botName = "MUHAMMED BOT";
 
 const commands = {
-  ".menu": "Available commands: .menu, .alive, .help, .ping",
-  ".alive": "🔥 MUHAMMED BOT is alive!",
-  ".help": "Contact the bot owner for help.",
-  ".ping": "Pong! 🏓"
+  ".menu": "📋 MUHAMMED BOT COMMANDS\n.alive\n.help\n.ping\n.owner",
+  ".alive": "🔥 MUHAMMED BOT is online!",
+  ".help": "Type .menu to see all commands.",
+  ".ping": "🏓 Pong! Bot is responding.",
+  ".owner": "👑 Owner: Muhammed"
 };
 
 function reply(message) {
   return commands[message.toLowerCase()] || "Unknown command. Type .menu";
 }
 
-console.log(botName + " is ready!");
-
+console.log(`${botName} has started!`);
 console.log(reply(".menu"));
+
+setInterval(() => {
+  console.log(`${botName} is still running...`);
+}, 60000);
